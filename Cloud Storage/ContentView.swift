@@ -22,7 +22,12 @@ struct ContentView: View {
                 }
                 else {
                     ForEach(todos, id:\.id) { todo in
-                        Text(todo.content)
+                        VStack(alignment: .leading) {
+                            Text(todo.content)
+                            Text(todo.createdAt, style: .date)
+                                .foregroundStyle(.gray)
+                                .font(.caption)
+                        }
                     }
                     .onDelete(perform: { indexSet in
                         indexSet.forEach { index in
